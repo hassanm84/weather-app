@@ -1,0 +1,5 @@
+.env
+/vendor
+/.vscode
+.phpunit.result.cache
+.bash_history

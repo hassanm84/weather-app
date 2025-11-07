@@ -1,0 +1,40 @@
+/* Weather result card background */
+#weather-result {
+    background: #F0FFFF;
+}
+
+/* Divider line between temp and description */
+#weather-divider {
+    height: 2.5rem;
+}
+
+/* Weather description icon */
+#weather-icon-desc {
+    height: 5rem;
+    width: 5rem;
+}
+
+/* Humidity, wind speed, wind direction icons */
+.weather-icon-wind-speed {
+    color: #0096FF;
+}
+
+.weather-icon-temp,
+.weather-icon-wind-dir {
+    color: #ff0000;
+}
+
+.weather-icon-humidity {
+    color: #0000FF;
+}
+
+/* animation when input is focused */
+.input-group:focus-within .input-group-text i {
+  color: #0d6efd; /* Bootstrap primary */
+  transform: scale(1.2);
+  transition: all 0.2s ease;
+}
+
+.input-group-text i {
+  transition: all 0.2s ease;
+}
