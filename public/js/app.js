@@ -11,7 +11,6 @@ $(document).ready(function () {
             method: 'GET',
             dataType: 'json',
             success: function (data) {
-                console.log(data)
                 if (data.error) {
                     // display error message
                     $('#weather-result').addClass('d-none');
@@ -28,7 +27,6 @@ $(document).ready(function () {
                 // display fetched weather data
                 $('#city-name').text(data.city);
                 $('#weather-description').text(data.weatherDescription);
-                console.log(iconUrl);
                 $('#weather-icon-desc').attr("src", iconUrl)
                 $('#temperature').text(data.temperature);
                 $('#humidity').text(data.humidity);
