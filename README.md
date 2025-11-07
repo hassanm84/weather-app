@@ -1,4 +1,4 @@
-# Weather Information Application - Bright Software Group Tech Test
+# Weather Info Application - Bright Software Group Tech Test
 
 
 ## Setup
