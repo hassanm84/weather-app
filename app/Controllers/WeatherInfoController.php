@@ -52,6 +52,7 @@ class WeatherInfoController
         //Fetch geographical coordinates for the city
         $geoData = $this->geoService->getGeoLocation($city);
 
+
         if ($geoData->error) {
             return [
                 'error' => true,

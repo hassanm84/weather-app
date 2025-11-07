@@ -92,17 +92,9 @@ class GeoServiceProvider implements GeoProviderInterface
 
         try {
             $response = $this->client->request(self::HTTP_GET_METHOD, $this->apiEndpoint, ['query' => $query]);
-            $data = json_decode($response->getBody(), true);
 
-            if (!empty($data[0]['lat']) && !empty($data[0]['lon'])) {
-                return [
-                    'name' => $data[0]['name'],
-                    'lat' => (float)$data[0]['lat'],
-                    'lon' => (float)$data[0]['lon'],
-                ];
-            }
+             return json_decode((string)$response->getBody(), true);
 
-            return [];
         } catch (GuzzleException $e) {
             // Exception logging is presumed to be out of scope for this assessment.
 

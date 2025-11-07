@@ -60,18 +60,37 @@ class GeoService
 
         $data = $this->provider->getCoordinates($city);
 
-        if (empty($data)) {
+        if (!is_array($data) && $data == false) {
             return new GeoData(
                 error: true,
-                errorCode: $this->config['api_error_status']['not_found'] ?? 404,
-                errorMessage: $this->config['api_error_messages']['location_not_found'] ?? 'Location not found.'
+                errorCode: $this->config['api_error_status']['unexpected_error'],
+                errorMessage: $this->config['api_error_messages']['unexpected_error']
             );
         }
 
+        if (empty($data)) {
+            return new GeoData(
+                error: true,
+                errorCode: $this->config['api_error_status']['resource_not_found'],
+                errorMessage: $this->config['api_error_messages']['invalid_city']
+            );
+        }
+
+        // Handle API responses
+        if ((int)($data['cod'] ?? 0) !== 200 && !isset($data[0]['lat'])) {
+            return new GeoData(
+                error: true,
+                errorCode: (int)($data['cod'] ?? $this->config['api_error_status']['unexpected_error']),
+                errorMessage: $data['message'] ?? ($this->config['api_error_messages']['unexpected_error'])
+            );
+        }
+
+
+
         return new GeoData(
-            city: $data['name'],
-            lat: $data['lat'],
-            lon: $data['lon'],
+            city: $data[0]['name'],
+            lat: $data[0]['lat'],
+            lon: $data[0]['lon'],
             country: $this->config['openweather']['country_code']
         );
     }
