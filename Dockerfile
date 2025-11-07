@@ -1,5 +1,5 @@
-# Use official PHP 8.2 FPM image
-FROM php:8.2-fpm
+# Use official PHP 8.4.1 FPM image
+FROM php:8.4.1-fpm
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     && docker-php-ext-install mbstring gd pdo_mysql
+
+# Install Composer globally
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Copy app to container
 COPY . .
