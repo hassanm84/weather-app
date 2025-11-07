@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle) ?></title>
+    <link rel="icon" href="data:,">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
